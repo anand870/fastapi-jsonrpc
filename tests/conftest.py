@@ -32,7 +32,8 @@ def app(ep):
 
 @pytest.fixture
 def app_client(app):
-    return TestClient(app)
+    with TestClient(app) as client:
+        yield client
 
 
 @pytest.fixture
